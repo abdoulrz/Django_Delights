@@ -1,0 +1,37 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Menu - Django Delights{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Balance Sheet</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<div class="scroll-container">
+    <table class="ingredient-table">
+        <thead>
+            <tr>
+                <th>Cost</th>
+                <th>Revenue</th>
+                <th>Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${{ cost }}</td>
+                <td>${{ revenue }}</td>
+                <td>${{ profit }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="dashboard-actions">
+    <!-- Inventory Button (Returns to Home) -->
+    <a href="{% url 'home' %}" class="btn-dashboard">Inventory</a>
+
+    <!-- Purchase Button -->
+    <a href="{% url 'purchase' %}" class="btn-dashboard">Purchase</a>
+
+    
+</div>
+{% endblock %}

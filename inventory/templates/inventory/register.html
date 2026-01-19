@@ -1,0 +1,86 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Register - Django Delights{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Direct override to bypass cache */
+    .form-group {
+        margin-bottom: 12px;
+        /* Reduced from 20px */
+        clear: both;
+    }
+
+    .auth-form-container label {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 4px;
+        /* Reduced from 8px */
+        font-weight: bold;
+        font-size: 0.9rem;
+        /* Slightly smaller font */
+    }
+
+    .auth-form-container input {
+        width: 100% !important;
+        /* Keep full width relative to container, but container has padding */
+        box-sizing: border-box !important;
+        padding: 8px;
+        /* Reduced from 10px */
+        margin-bottom: 2px;
+        font-size: 0.95rem;
+        /* Slightly smaller input text */
+    }
+
+    /* Add padding to the container instead of shrinking inputs */
+    /* Add padding to the container instead of shrinking inputs */
+    .auth-form-container {
+        padding: 20px 30px !important;
+        /* Reduced padding (vertical horizontal) */
+        max-width: 400px;
+        /* Reduced width */
+        margin: 30px auto !important;
+        /* Force centering */
+    }
+
+    .helptext {
+        display: block;
+        font-size: 0.75em;
+        /* Smaller help text */
+        color: #666;
+        margin-top: 2px;
+        line-height: 1.2;
+    }
+
+    ul.errorlist {
+        margin: 5px 0;
+        padding-left: 20px;
+        font-size: 0.85em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Register</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<div class="auth-form-container">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+            {{ field }}
+            {% if field.help_text %}
+            <small class="helptext">{{ field.help_text }}</small>
+            {% endif %}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <button type="submit">Register</button>
+    </form>
+    <div class="auth-link">
+        Already have an account? <a href="{% url 'login' %}">Login here</a>
+    </div>
+</div>
+{% endblock %}

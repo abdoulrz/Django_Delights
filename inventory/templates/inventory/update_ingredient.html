@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Ingredient - Django Delights{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Update Ingredient</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Ingredient</button>
+</form>
+{% endblock %}

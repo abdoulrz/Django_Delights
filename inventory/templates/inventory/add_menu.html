@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Menu-Item - Django Delights{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Add Menu-Item</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Menu</button>
+</form>
+{% endblock %}

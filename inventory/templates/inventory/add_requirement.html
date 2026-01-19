@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Requirements - Django Delights{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Recipe Requirements</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Requirements</button>
+</form>
+{% endblock %}

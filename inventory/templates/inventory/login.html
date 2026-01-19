@@ -1,0 +1,58 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Login - Django Delights{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Direct override to bypass cache */
+    .form-group {
+        margin-bottom: 12px;
+        clear: both;
+    }
+
+    .auth-form-container label {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 4px;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .auth-form-container input {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 8px;
+        margin-bottom: 2px;
+        font-size: 0.95rem;
+    }
+
+    .auth-form-container {
+        padding: 20px 30px !important;
+        max-width: 400px;
+        margin: 30px auto !important;
+        /* Force centering */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Login</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<div class="auth-form-container">
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+            {{ field }}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <button type="submit">Login</button>
+    </form>
+    <div class="auth-link">
+        Don't have an account? <a href="{% url 'register' %}">Register here</a>
+    </div>
+</div>
+{% endblock %}

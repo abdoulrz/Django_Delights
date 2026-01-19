@@ -1,0 +1,44 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}Inventory - Django Delights{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">Inventory</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<div class="scroll-container">
+    <table class="ingredient-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in ingredients %}
+            <tr>
+                <td><a href="{% url 'ingredient_update' ingredient.id %}">{{ ingredient.name }}</a></td>
+                <td>{{ ingredient.quantity }}</td>
+                <td>${{ ingredient.price }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No ingredients in stock.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="dashboard-actions">
+    <!-- Menus Button (Toggles to Menus View) -->
+    <a href="{% url 'menu' %}" class="btn-dashboard">Menus</a>
+
+    <!-- Purchase Button -->
+    <a href="{% url 'purchase' %}" class="btn-dashboard">Purchase</a>
+
+    <!-- Balance Sheet Button -->
+    <a href="{% url 'balance_sheet' %}" class="btn-dashboard">Balance Sheet</a>
+</div>
+{% endblock %}

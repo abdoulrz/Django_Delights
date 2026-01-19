@@ -1,0 +1,31 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}History - Django Delights{% endblock %}
+
+{% block content %}
+<h2 class="inventory-header">History</h2>
+<p class="date-badge">{% now "F j, Y" %}</p>
+
+<div class="scroll-container">
+    <table class="ingredient-table">
+        <thead>
+            <tr>
+                <th>Menu</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in history %}
+            <tr>
+                <td>{{ item.menu }}</td>
+                <td>{{ item.record }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No purchase history available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

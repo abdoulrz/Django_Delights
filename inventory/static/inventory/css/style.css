@@ -1,0 +1,308 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #e6e4e4;
+}
+
+header {
+    background: #3e3e3d;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    background-color: rgb(220, 72, 102);
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.history-link {
+    position: absolute;
+    left: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto 40px auto;
+    /* Added bottom margin */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Center everything in main */
+}
+
+.inventory-header {
+    display: inline-block;
+    background-color: #d9534f;
+    /* Tomato red */
+    color: white;
+    padding: 10px 25px;
+    margin-bottom: 5px;
+    border-radius: 50px;
+    box-shadow: 0 4px #c9302c;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.date-badge {
+    display: inline-block;
+    background-color: #f0ad4e;
+    /* Warm Mustard/Orange */
+    color: #333;
+    padding: 5px 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 2px solid #eea236;
+    display: block;
+    /* Force to new line but keeps centered due to main text-align */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inventory-list {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inventory-list li {
+    background: #fdfdfd;
+    margin: 10px 0;
+    padding: 15px;
+    border: 3px solid #d9534f;
+    /* Full colored frame */
+    border-radius: 12px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+}
+
+/* Scrollable Ingredient Container */
+.scroll-container {
+    max-height: 250px;
+    /* Adjust based on ~6 items height */
+    overflow-y: auto;
+    border: 3px solid #d9534f;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90%;
+    background: #fff;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ingredient-table th,
+.ingredient-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.ingredient-table th {
+    background-color: #f0ad4e;
+    color: #333;
+    position: sticky;
+    top: 0;
+}
+
+/* Dashboard Action Buttons */
+.dashboard-actions {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.btn-dashboard {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+    flex: 1 1 150px;
+    /* Responsive flex */
+    text-align: center;
+}
+
+.btn-dashboard:hover {
+    background-color: #555;
+}
+
+.btn-highlight {
+    background-color: #d9534f;
+    /* Matches header */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #333;
+    color: #fff;
+    /* Removed position: fixed to allow scrolling */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* This targets the anchor inside the table specifically to increase "weight" */
+.ingredient-table td a.menu-link,
+.ingredient-table td a.menu-link:visited {
+    text-decoration: none !important;
+    color: #333 !important;
+}
+
+/* Authentication Forms (Login & Register) */
+.auth-form-container {
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #fdfdfd;
+    border: 3px solid #d9534f;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.auth-form-container label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    width: 100%;
+    /* Force label to take full width */
+    clear: both;
+    /* Ensure label is on its own line */
+}
+
+.auth-form-container input[type="text"],
+.auth-form-container input[type="email"],
+.auth-form-container input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.auth-form-container input[type="text"]:focus,
+.auth-form-container input[type="email"]:focus,
+.auth-form-container input[type="password"]:focus {
+    outline: none;
+    border-color: #d9534f;
+    box-shadow: 0 0 8px rgba(217, 83, 79, 0.3);
+}
+
+.auth-form-container button[type="submit"] {
+    width: 100%;
+    background-color: #d9534f;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.auth-form-container button[type="submit"]:hover {
+    background-color: #c9302c;
+    transform: translateY(-2px);
+}
+
+.auth-form-container button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Help text styling */
+.auth-form-container .helptext {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Error messages */
+.auth-form-container .errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #721c24;
+}
+
+.auth-form-container .errorlist li {
+    margin: 5px 0;
+}
+
+/* Auth link (e.g., "Don't have an account?") */
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.auth-link a {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.auth-link a:hover {
+    color: #c9302c;
+    text-decoration: underline;
+}
