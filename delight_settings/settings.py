@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-j4ha^hp8e%9d!wb(s7x5e@zww7550a06n7b$q@t@l5a&%rc+69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Allow all hosts for easy deployment (secure this in real production!)
+
+# ... (omitted lines)
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Required for PythonAnywhere 'collectstatic'
 
 
 # Application definition
