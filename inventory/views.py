@@ -10,12 +10,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import CustomUserCreationForm
 
+from django.contrib import messages
+
 #The register logic
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Registration successful! Please login.")
             return redirect("login")  # Redirect to login page after registration
     else:
         form = CustomUserCreationForm()
@@ -32,6 +35,7 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, f"Welcome back, {username}!")
                 return redirect("home")  # Redirect to home page after successful login
             else:
                 # Add error message to form
@@ -44,6 +48,7 @@ def user_login(request):
 #The logout logic
 def user_logout(request):
     logout(request)
+    messages.success(request, "You have been logged out.")
     return redirect("login")  # Redirect to login page after logout
 
 
@@ -115,6 +120,10 @@ class PurchaseCreateView(LoginRequiredMixin, CreateView):
             req.ingredient.save()
 
         return super().form_valid(form)
+    
+    def get_success_url(self):
+        messages.success(self.request, "Purchase recorded successfully!")
+        return super().get_success_url()
 
 
 #Adding the balance sheet logic
