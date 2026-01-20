@@ -99,6 +99,23 @@ class PurchaseCreateView(LoginRequiredMixin, CreateView):
     template_name = "inventory/purchase.html"
     success_url = reverse_lazy("home")
 
+    def form_valid(self, form):
+        menu_item = form.instance.menu 
+        requirements = menu_item.reciperequirement_set.all()
+
+        # LOOP 1: CHECK ONLY
+        for req in requirements:
+            if req.quantity > req.ingredient.quantity:
+                form.add_error(None, f"Not enough {req.ingredient.name}!")
+                return self.form_invalid(form)
+
+        # LOOP 2: DEDUCT (Only runs if Loop 1 finished without error)
+        for req in requirements:
+            req.ingredient.quantity -= req.quantity
+            req.ingredient.save()
+
+        return super().form_valid(form)
+
 
 #Adding the balance sheet logic
 @login_required
